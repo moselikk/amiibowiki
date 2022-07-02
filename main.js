@@ -24,15 +24,17 @@ function getRandomInt(min, max) {
 }
 
 async function getData() {
-  let myObject = await fetch(`https://amiiboapi.com/api/amiibo/?character=${character}`);
-    // console.log(myObject);
-  if(myObject.status === 200){
-    amiibos = await myObject.json();
-    amiibos = await amiibos.amiibo;
-    showData();
-  }else{
-    alert('查询失败，请输入正确的amiibo人物名字全称。');
- }
+    let response = await fetch(`https://amiiboapi.com/api/amiibo/?character=${character}`);
+    if(response.status >= 200 && response.status < 300){
+      amiibos = await response.json();
+      amiibos = await amiibos.amiibo;
+      showData();
+    }else{
+      alert(`
+      ${response.status}---${response.statusText}
+      查询失败，请输入正确的amiibo人物名字全称。`
+      );
+   }
 }
 
 getData();
@@ -42,8 +44,8 @@ function showData() {
     item.removeChild(item.firstChild);
   }
   for(i=0; i < amiibos.length; i++) {
-    img = document.createElement('img');
     lili = document.createElement('li');
+    img = document.createElement('img');
     img.src = amiibos[i].image;
     lili.appendChild(img);
     item.appendChild(lili);
@@ -61,11 +63,6 @@ function clickShowData() {
 
 function enterShowData(e){
   if(e.key === 'Enter'){
-    if(amiiboName.value.trim()){
-      character = amiiboName.value.toLowerCase();
-      getData();
-    }else{
-      alert("输入不能为空！");
-    }
+    clickShowData();
   }
 }
