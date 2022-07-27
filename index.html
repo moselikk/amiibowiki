@@ -7,10 +7,11 @@
     <title>AmiiboWIKI</title>
     <link rel="icon" href="https://less-1251975755.cos.ap-beijing.myqcloud.com/favicon.ico">
     <link href="./style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./shadow.css">
   </head>
   <body>
     <div class="header">
-      <h1 class="sitename">AmiiboWIKI</h1>
+      <h1 class="sitename" id="fontLogo"><a href="./">AmiiboWIKI</a></h1>
       <div class="search">
         <input type="text" id="amiiboName" class="form-control">
         <button id="btn" type="button" class="btn btn-primary">搜索amiibo</button>
@@ -20,6 +21,17 @@
       <ul id="item">
       </ul>
     </div>
+    <div class="guide" id="guide">
+      <div class="guide-con">
+        <button id="colseInfo">x</button>
+        <div class="outer">
+          <img class="guide-img" id="guide-img" src="" alt="">
+          <div class="amiiboInfo" id="amiiboInfo">没有找到相关信息</div>
+        </div>
+      </div>
+    </div>
+    <div class="re" id="re"></div>
+    <div class="bacTop" id="bacTop"></div>
     <script src="./main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>
