@@ -55,7 +55,7 @@ function selectAmiibo(word){
   //  console.log(word);
   //  console.log(targetAmiibo);
 
-  console.log(targetAmiibo);
+  // console.log(targetAmiibo);
   showData2(targetAmiibo);
 }
 
