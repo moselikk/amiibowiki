@@ -27,7 +27,7 @@ function getRandomInt(min, max) {
 }
 
 async function getBases() {
-  let Object = await fetch('https://amiiboapi.com/api/amiibo');
+  let Object = await fetch('https://amiiboapi.com/api/amiibo/');
   if(Object.status >= 200 && Object.status < 300){
     amiibos = await Object.json();
     bases = await amiibos.amiibo;
