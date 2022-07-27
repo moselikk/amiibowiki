@@ -67,7 +67,8 @@ function showData2(targetAmiibo) {
   for(i=0; i < targetAmiibo.length; i++) {
     lili = document.createElement('li');
     img = document.createElement('img');
-    img.src = targetAmiibo[i].image;
+    img.src = `https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${targetAmiibo[i].image.slice(65)}`;
+    // img.src = targetAmiibo[i].image;
     lili.appendChild(img);
     item.appendChild(lili);
   }
@@ -98,7 +99,7 @@ function handleClick(e) {
 
 function selectIterm(e){
   for(i=0; i < targetAmiibo.length; i++){
-    if(targetAmiibo[i].image == e.target.src){
+    if(`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${targetAmiibo[i].image.slice(65)}` == e.target.src){
       return i
     }
   }
