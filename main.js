@@ -21,9 +21,44 @@ bacTop.addEventListener('click',topFunction)
 
 amiiboName.placeholder = `输入amiibo人物名字`
 
-
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+if (isMobile()) {
+  console.log("mobile");
+  document.querySelectorAll('link')[2].href = './mobile_shadow.css'
+/*   (function () {
+    //获取弹框
+    var modalBg = document.querySelector('#modalBg');
+    var closeBtn = document.querySelector('#closeBtn');
+
+    //全局阻止默认行为
+    document.addEventListener('touchstart', function(event){
+        event.preventDefault();
+    }, {passive: false});
+
+    //按钮触摸事件 touchend
+    closeBtn.addEventListener('touchend', function(event){
+        modalBg.remove();
+    });
+
+    //单独给a元素添加 touchend事件
+    var linkNodes = document.querySelectorAll('.links a');
+    linkNodes.forEach(function(linkNode){
+        linkNode.addEventListener('touchend', function(){
+           location.href =  this.href;
+        });
+    })
+})(); */
+
+} else {
+  console.log("pc");
+}
+
+function isMobile() {
+  let flag = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return flag;
 }
 
 async function getBases() {
@@ -118,12 +153,12 @@ function showInfo(i){
   amiiboInfo.innerHTML = `
   <h1>${name}</h1>
   <ul>
-    <li>amiiboSeries: ${amiiboSeries}</li>
-    <li>character: ${character}</li>
-    <li>gameSeries: ${gameSeries}</li>
-    <li>type: ${type}</li>
+    <li><span>amiiboSeries:</span> ${amiiboSeries}</li>
+    <li><span>character:</span> ${character}</li>
+    <li><span>gameSeries:</span> ${gameSeries}</li>
+    <li><span>type:</span> ${type}</li>
     <p>
-    <h3>release</h3>
+    <li><span>release:</span></li>
       <ul class='release'>
       ${amiiboReleaseStr}
       </ul>

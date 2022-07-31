@@ -10,34 +10,32 @@
 }
 
 .guide .guide-con{
-    width: 800px;
-    height: 500px;
+    width: 300px;
+    height: 600px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -400px;
-    margin-top: -250px;
-    overflow: hidden;
+    margin-left: -150px;
+    margin-top: -300px;
+    /* overflow: hidden; */
+    overflow:scroll;
     box-shadow: 0 0 36px 0 rgb(0 0 0);
     border-radius: 4px;
+    background-color: #fff;
 }
 .guide .guide-con .outer{
-    display: flex;
-    background-color: #fff;
-    height: 100%;
     width: 100%;
+    padding: 30px 10px;
 }
 
 .guide-img{
     display: block;
     max-width: 15em;
     margin: auto;
-    margin-right: 10px;
 }
 
 .guide .guide-con .outer div{
-    padding: 3em 2.5em 3em 0em;
-    margin-right: 30px;
+    /* padding: 3em 2.5em 3em 0em; */
     margin-left: auto;
 }
 
@@ -45,31 +43,39 @@
     font-size: 2em;
     font-weight: bold;
     color: tomato;
-    margin-top: 18px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 .guide button{
-    display:block; 
+    display: block; 
     position: absolute;
-    right: 15px;
+    right: 5px;
     top: 10px;
 }
 
 .outer li{
     list-style: none;
-    margin: .5em auto;
-    font-size: 1.2em;
+    margin: auto;
+    font-size: 1em;
     font-weight: normal;
+    padding: 0 2em;
+    text-align: center;
 }
 /* .outer h3{
     font-size: 1.5em;
     font-weight: normal;
+    margin-left: 1em;
 } */
 
 .outer .release li{
-    list-style:disc;
-    margin-left: 2em;
+    list-style:none;
+    /* margin-left: 1em; */
     font-size: 1em;
     font-style: italic;
+}
+
+.outer .release li span{
+    font-weight: 500;
 }
