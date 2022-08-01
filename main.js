@@ -2,6 +2,7 @@ let bases = [],
     character = ''
     targetAmiibo = [],
     randomInt = 0,
+    num = 0,
     btn = document.getElementById('btn'),
     item = document.getElementById('item'),
     amiiboName = document.getElementById('amiiboName'),
@@ -67,7 +68,7 @@ function selectAmiibo(word){
 
 /***********************/
 // images lazyload function
-let num = 0;
+// let num = 0;
 function lazyload() {
   const imgs = item.querySelectorAll('img')
   const itemLi = item.querySelectorAll('li')
@@ -93,7 +94,9 @@ function debounce(fn, delay = 500) {
 window.addEventListener("scroll", debounce(lazyload, 600), false);
 /********************/
 
+
 function showData(targetAmiibo) {
+  num = 0;
   while (item.firstChild) {
     item.removeChild(item.firstChild);
   }
