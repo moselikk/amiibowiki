@@ -4,13 +4,14 @@ let bases = [],
     randomInt = 0,
     btn = document.getElementById('btn'),
     item = document.getElementById('item'),
-    amiiboName = document.getElementById('amiiboName');
-    guide = document.getElementById('guide');
-    guideImg = document.getElementById('guide-img');
-    amiiboInfo = document.getElementById('amiiboInfo');
-    colseInfo = document.getElementById('colseInfo');
-    re = document.getElementById('re');
-    bacTop = document.getElementById('bacTop');
+    amiiboName = document.getElementById('amiiboName'),
+    guide = document.getElementById('guide'),
+    guideImg = document.getElementById('guide-img'),
+    amiiboInfo = document.getElementById('amiiboInfo'),
+    colseInfo = document.getElementById('colseInfo'),
+    re = document.getElementById('re'),
+    bacTop = document.getElementById('bacTop'),
+    viewHeight = window.innerHeight || document.documentElement.clientHeight;
 
 btn.addEventListener('click', clickShowData);
 amiiboName.addEventListener('keydown',enterShowData);
@@ -26,34 +27,10 @@ function getRandomInt(min, max) {
 }
 
 if (isMobile()) {
-  console.log("mobile");
+  // console.log("mobile");
   document.querySelectorAll('link')[2].href = './mobile_shadow.css'
-/*   (function () {
-    //获取弹框
-    var modalBg = document.querySelector('#modalBg');
-    var closeBtn = document.querySelector('#closeBtn');
-
-    //全局阻止默认行为
-    document.addEventListener('touchstart', function(event){
-        event.preventDefault();
-    }, {passive: false});
-
-    //按钮触摸事件 touchend
-    closeBtn.addEventListener('touchend', function(event){
-        modalBg.remove();
-    });
-
-    //单独给a元素添加 touchend事件
-    var linkNodes = document.querySelectorAll('.links a');
-    linkNodes.forEach(function(linkNode){
-        linkNode.addEventListener('touchend', function(){
-           location.href =  this.href;
-        });
-    })
-})(); */
-
 } else {
-  console.log("pc");
+  // console.log("pc");
 }
 
 function isMobile() {
@@ -69,9 +46,6 @@ async function getBases() {
     randomInt = await getRandomInt(0,(bases.length - 1));
     character =  await bases[randomInt].character;
     selectAmiibo(character.toLowerCase());
-    // console.log(bases);
-    // console.log(randomInt);
-    // console.log(character);
   }else{
     alert(`
     ${a.status}---${a.statusText}
@@ -87,22 +61,46 @@ function selectAmiibo(word){
   targetAmiibo = bases.filter((amiibo, index) => { 
     return amiibo.character.toLowerCase().includes(word)
    })
-  //  console.log(word);
-  //  console.log(targetAmiibo);
-
-  // console.log(targetAmiibo);
-  showData2(targetAmiibo);
+  showData(targetAmiibo);
+  lazyload();
 }
 
+/***********************/
+// images lazyload function
+let num = 0;
+function lazyload() {
+  const imgs = item.querySelectorAll('img')
+  const itemLi = item.querySelectorAll('li')
+  for (let i = num; i < imgs.length; i++) {
+    let distance = viewHeight - itemLi[i].getBoundingClientRect().top;
+    if (distance >= 0) {
+      imgs[i].src = imgs[i].getAttribute("data-src");
+      // 防止重复赋值减少DOM操作
+      num = i + 1;
+    }
+  }
+}
+/* debounce function */
+function debounce(fn, delay = 500) {
+  let timer = null;
+  return function (...args) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.call(this, args);
+    }, delay);
+  };
+}
+window.addEventListener("scroll", debounce(lazyload, 600), false);
+/********************/
 
-function showData2(targetAmiibo) {
+function showData(targetAmiibo) {
   while (item.firstChild) {
     item.removeChild(item.firstChild);
   }
   for(i=0; i < targetAmiibo.length; i++) {
     lili = document.createElement('li');
     img = document.createElement('img');
-    img.src = `https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${targetAmiibo[i].image.slice(65)}`;
+    img.setAttribute("data-src",`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${targetAmiibo[i].image.slice(65)}`);
     // img.src = targetAmiibo[i].image;
     lili.appendChild(img);
     item.appendChild(lili);
@@ -153,12 +151,12 @@ function showInfo(i){
   amiiboInfo.innerHTML = `
   <h1>${name}</h1>
   <ul>
-    <li><span>amiiboSeries:</span> ${amiiboSeries}</li>
-    <li><span>character:</span> ${character}</li>
-    <li><span>gameSeries:</span> ${gameSeries}</li>
-    <li><span>type:</span> ${type}</li>
+    <li><span>Amiibo系列:</span> ${amiiboSeries}</li>
+    <li><span>角色名称:</span> ${character}</li>
+    <li><span>游戏系列:</span> ${gameSeries}</li>
+    <li><span>发行类型:</span> ${type}</li>
     <p>
-    <li><span>release:</span></li>
+    <li><span>发行时间:</span></li>
       <ul class='release'>
       ${amiiboReleaseStr}
       </ul>
@@ -183,3 +181,18 @@ function reFunction() {
   character = bases[randomInt].character;
   selectAmiibo(character.toLowerCase());
 }
+
+
+
+
+/*   function debounce(fn, delay = 500) {
+    let timer = null;
+    return function (...args) {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        fn.call(this, args);
+      }, delay);
+    };
+  }
+  // 监听Scroll事件，为了防止频繁调用，使用防抖函数优化一下
+  window.addEventListener("scroll", debounce(lazyload, 600), false); */
