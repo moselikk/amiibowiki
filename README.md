@@ -1,8 +1,8 @@
 # AmiiboWIKI
 
-## Hi~ o(*￣▽￣*)ブ___欢迎欢迎热烈欢迎！
+### Hi~ o(*￣▽￣*)ブ___欢迎欢迎热烈欢迎！
 
-![](https://less-1251975755.cos.ap-beijing.myqcloud.com/amiibowiki/AmiiboWIKI.png)
+![](./images/AmiiboWIKI.png)
 
 此项目目的为巩固JS基础，目前为纯手敲使用原生JS语法开发；
 
