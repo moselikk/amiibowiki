@@ -1,5 +1,8 @@
 # AmiiboWIKI
-Hi~ o(*￣▽￣*)ブ___欢迎欢迎热烈欢迎！
+
+## Hi~ o(*￣▽￣*)ブ___欢迎欢迎热烈欢迎！
+
+![](https://less-1251975755.cos.ap-beijing.myqcloud.com/amiibowiki/AmiiboWIKI.png)
 
 此项目目的为巩固JS基础，目前为纯手敲使用原生JS语法开发；
 
@@ -14,4 +17,10 @@ Hi~ o(*￣▽￣*)ブ___欢迎欢迎热烈欢迎！
 - [ ] 使用React重构
 - [ ] 增加消息动态栏，显示用户发布的动态（amiibo交流信息）
 - [ ] 移植为小程序
-- [ ] 使用React Native开发对应ios，Android原生应用
+- [ ] 使用React Native开发对应ios，Android原生应用  
+
+---
+
+*本项目涉及到的amiibo图片版权归日本任天堂公司所有，*
+
+*此处使用仅为学习，如有侵权请联系删除*
