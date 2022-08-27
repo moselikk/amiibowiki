@@ -49,13 +49,6 @@
     margin-bottom: 20px;
 }
 
-.guide button{
-    display:block; 
-    position: absolute;
-    right: 15px;
-    top: 10px;
-}
-
 .outer li{
     list-style: none;
     margin: .5em auto;
@@ -72,4 +65,43 @@
     margin-left: 2em;
     font-size: 1em;
     font-style: italic;
+}
+.guide .exitButton{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    padding: 5px;
+    background: rgba(39,79,84,0.6);
+    text-indent: -9999px;
+    position: absolute;
+    z-index: 20;
+    opacity: 1;
+    right: 15px;
+    top: 10px;
+}
+.guide .exitButton:before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: url(./images/icon-x.svg) no-repeat left top;
+    background-size: 100%;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    margin-left: -8px;
+    box-sizing: border-box;
+}
+.guide .exitButton:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: solid 2px #d1a63b;
+    width: 36px;
+    height: 36px;
+    margin-top: -18px;
+    margin-left: -18px;
+    border-radius: 50%;
+    box-sizing: border-box;
 }
