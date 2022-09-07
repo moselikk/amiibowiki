@@ -46,7 +46,7 @@ export default {
   methods:{
     // 调用外部封装的axios
     async getData(){
-      let response = await request.get('/amiibo')
+      let response = await request.get('/amiibo/')
       this.amiibos =  await response.amiibo
       this.order()
     },
