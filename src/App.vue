@@ -10,8 +10,15 @@
     </select>
     <br />
     <input type="text" v-model="search" @keyup="debounce(handleSearch, 600)" />
+    <div v-show="start">欢迎访问</div>
+    <div v-show="without">没有相关数据</div>
     <div>
-      <img v-for="(item,$index) in show.slice(0,listLength)" :key="item.tail" :src="item.image" :alt="item.name" @click="handleClick($index)">
+      <img v-for="(item,$index) in (show ? show.slice(0,listLength) : [])" 
+        :key="item.tail" 
+        :src="item.image" 
+        :alt="item.name" 
+        @click="handleClick($index)"
+      >
     </div>
   </div>
 </template>
@@ -22,6 +29,7 @@ export default {
   name: 'App',
   data(){
     return{
+      start: true,
       listLength: 6,
       amiibos: [],
       orderAmiibo:{
@@ -33,7 +41,8 @@ export default {
       selectClass: '',
       chosen: [],
       show: [],
-      search: ''
+      search: '',
+      without: false
     }
   },
   created(){
@@ -42,6 +51,23 @@ export default {
   mounted(){
     // 发请求获取所有amiibo数据
     this.getData()
+  },
+  watch:{
+    show: function(show) {
+      if(!show || (show.length==0 && this.search) || !this.selectClass){
+        this.without = true
+      } else {
+        this.without = false
+      }
+    },
+    selectSeries: function(selectSeries) {
+      if(!selectSeries){
+        this.show = []
+        this.without = true
+      } else {
+        this.without = false
+      }
+    }
   },
   methods:{
     // 调用外部封装的axios
