@@ -2,7 +2,7 @@
 
 ### Hi~ o(*￣▽￣*)ブ___欢迎你来！
 
-![](./old/images/AmiiboWIKI.png)
+![](./src/assets/new.png)
 使用vue开发的amiibo卡片展示站；
 
 目前功能较为简陋，计划开发流程如下：
