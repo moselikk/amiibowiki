@@ -2,10 +2,7 @@
   <div id="app">
     <img src="./assets/Logo.webp" alt="" class="logo" />
     <AmiiboSelect></AmiiboSelect>
-    <div v-show="start" class="start">
-      <h1>正因为生来什么都没有，因此我们能拥有一切。</h1>
-      <img src="./assets/start-img.jpg" alt="start">
-    </div>
+    <HomeModule :start="start"></HomeModule>
     <AmiiboList @handleStart.once="handleStart"></AmiiboList>
     <footer>
       <p>
@@ -19,6 +16,7 @@
 <script>
 import AmiiboList from './components/List'
 import AmiiboSelect from './components/Select'
+import HomeModule from './components/Home'
 export default {
   name: 'App',
   data(){
@@ -43,7 +41,7 @@ export default {
       this.start = false
     }
   },
-  components: { AmiiboList, AmiiboSelect}
+  components: { AmiiboList, AmiiboSelect, HomeModule}
 }
 </script>
 
@@ -56,19 +54,6 @@ export default {
     width: 300px;
     display: inline-block;
   }
-  .start{
-    text-align: center;
-    margin-top: 60px;
-    h1{
-      display: inline-block;
-      width: 40vw;
-      margin-bottom: 50px;
-      font-weight: normal;
-    }
-    img{
-      width: 92vw;
-    }
-  }
   footer{
     font-size: 13px;
     a{
@@ -78,8 +63,8 @@ export default {
       &:hover{
         padding: 0 8px;
         background-color: rgba(128, 128, 128, .3);
-        border-radius: 8px;
         box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.15), inset 0px 2px 2px rgba(0, 0, 0, 0.35);
+        border-radius: 8px;
       }
     }
   }
