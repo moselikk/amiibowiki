@@ -6,9 +6,9 @@
     <AmiiboList @handleStart.once="handleStart"></AmiiboList>
     <footer>
       <p>
-        Code by <a href="https://moselikk.com">moselikk</a> data from <a href="https://moselikk.com">Amiiboapi</a> The image is copyright <a href="https://moselikk.com">Nintendo</a>
+        Code by <a href="https://moselikk.com">moselikk</a> data from <a href="https://amiiboapi.com">Amiiboapi</a> The image is copyright <a href="https://amiibo.com">Nintendo</a>
       </p>
-      <p>Check out the project in the <a href="https://moselikk.com">Github</a></p>
+      <p>Check out the project in the <a href="https://github.com/moselikk">Github</a></p>
     </footer>
   </div>
 </template>
@@ -56,16 +56,20 @@ export default {
   }
   footer{
     font-size: 13px;
+    margin-top: 10vh;
+    margin-bottom: 20px;
     a{
       text-decoration: none;
       font-weight: bold;
       color: #000;
+      /*
       &:hover{
         padding: 0 8px;
         background-color: rgba(128, 128, 128, .3);
         box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.15), inset 0px 2px 2px rgba(0, 0, 0, 0.35);
         border-radius: 8px;
       }
+      */
     }
   }
 }

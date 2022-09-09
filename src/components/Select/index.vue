@@ -165,6 +165,7 @@ export default {
     margin: 0 10px;
     box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.15), inset 0px 2px 2px rgba(0, 0, 0, 0.35);
     border: 0;
+    cursor: pointer;
   }
 }
 .search{

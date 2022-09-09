@@ -15,15 +15,17 @@
 <style lang="scss" scoped>
   .start{
     text-align: center;
-    margin-top: 60px;
+    margin-top: 10vh;
+    height: 50vh;
     h1{
       display: inline-block;
       width: 40vw;
-      margin-bottom: 50px;
+      margin-bottom: 35px;
       font-weight: normal;
+      font-size: 26px;
     }
     img{
-      width: 92vw;
+      width: 78vw;
     }
   }
 </style>
