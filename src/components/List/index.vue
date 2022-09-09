@@ -9,7 +9,7 @@
           >
           <img 
             :key="item.tail" 
-            :src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${item.image.slice(65)}`" 
+            :src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${item.image.slice(65)}`"
             :alt="item.name" 
             
           />
