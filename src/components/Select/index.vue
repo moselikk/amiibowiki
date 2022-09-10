@@ -10,7 +10,7 @@
       <option v-for="(_,$index) in series" :key="$index" :value="$index">{{$index}}</option>
     </select>
     </div>
-    <input class="search" type="text" v-model="search" @keyup="debounce(handleSearch, 600)" />
+    <input class="search" type="text" v-model="search" @keyup="debounce(handleSearch, 600)" placeholder="Search" />
   </div>
 </template>
 
