@@ -14,7 +14,7 @@
           <img 
             :key="item.tail"
             :alt="item.name" 
-            :src="item.image"
+            :src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${item.image.slice(65)}`"
           />
         </div>
       </div>
