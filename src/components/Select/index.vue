@@ -10,7 +10,7 @@
       <option v-for="(_,$index) in series" :key="$index" :value="$index">{{$index}}</option>
     </select>
     </div>
-    <input class="search" type="text" v-model="search" @keyup="debounce(handleSearch, 600)" placeholder="Search" />
+    <input class="search" type="text" v-model="search" @keyup="debounce(handleSearch, 600)" :placeholder="`All amiibos ${this.amiibos.length}`" ref="search" />
   </div>
 </template>
 
@@ -109,6 +109,7 @@ export default {
       this.chosen = this.orderAmiibo[this.selectSeries][this.selectClass]
       // 展示所选类别内容
       this.$store.commit('UPDATESHOW',this.chosen)
+      this.$refs.search.placeholder = this.selectClass + ' ' + this.chosen.length
     },
     // 搜索
     handleSearch(){

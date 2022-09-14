@@ -1,5 +1,8 @@
 <template>
     <div class="listOuter">
+      <div class="shade" v-if="dialogShow" @click="handleShade">
+        <Dialog :amiiboInfo="amiiboInfo"></Dialog>
+      </div>
       <div class="list">
         <div v-show="without">没有相关数据</div>
         <div 
@@ -7,11 +10,11 @@
           :key="item.tail"
           @click="handleClick($index)"
           >
+          <!--:src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${item.image.slice(65)}`"-->
           <img 
-            :key="item.tail" 
-            :src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${item.image.slice(65)}`"
+            :key="item.tail"
             :alt="item.name" 
-            
+            :src="item.image"
           />
         </div>
       </div>
@@ -20,53 +23,76 @@
 </template>
 
 <script>
-  export default {
-    name: 'AmiiboList',
-    data(){
-      return{
-        listLength: 8,
-        without: false,
-        btnShow: false
-
+import Dialog from '../Dialog'
+export default {
+  name: 'AmiiboList',
+  data(){
+    return{
+      // 默认显示卡片数量
+      listLength: 10,
+      without: false,
+      btnShow: false,
+      dialogShow: false,
+      amiiboInfo: {}
+    }
+  },
+  mounted(){
+    // console.log(this.$store.state.count);
+  },
+  watch:{
+    show: function(){
+      this.$emit('handleStart')
+      if(this.show.length > this.listLength){
+        this.btnShow = true
+      } else {
+        this.btnShow = false
       }
     },
-    mounted(){
-      // console.log(this.$store.state.count);
-    },
-    watch:{
-      show: function(){
-        this.$emit('handleStart')
-        if(this.show.length > this.listLength){
-          this.btnShow = true
-          console.log('执行了');
-        }
-      },
-      listLength: function(){
-        if(this.show.length < this.listLength){
-          this.btnShow = false
-        }
-      }
-    },
-    computed:{
-      show(){
-        return this.$store.state.show
-      }
-    },
-    methods:{
-      // 卡片点击
-      handleClick(index){
-        alert(`点击的是第：${index}个，名字是${this.show[index].name}`)
-      },
-      loadMore(){
-        this.listLength += 8
+    listLength: function(){
+      if(this.show.length < this.listLength){
+        this.btnShow = false
       }
     }
-  }
+  },
+  computed:{
+    show(){
+      return this.$store.state.show
+    }
+  },
+  methods:{
+    // 卡片点击显示详情页
+    handleClick(index){
+      this.amiiboInfo = this.show[index]
+      this.dialogShow = true
+      // 阻止背景页面滚动
+      document.querySelector('body').style.overflow = 'hidden'
+    },
+    // 关闭详情页
+    handleShade(){
+      this.dialogShow = false
+      // 释放背景页面滚动
+      document.querySelector('body').style.overflow = ''
+    },
+    // 加载更多
+    loadMore(){
+      this.listLength += 10
+    }
+  },
+  components:{ Dialog }
+}
 </script>
 
 <style lang="scss" scoped>
 .listOuter{
   margin-bottom: 30px;
+}
+.shade{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .list{
   margin: 30px 10px;

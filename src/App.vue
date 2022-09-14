@@ -6,7 +6,8 @@
     <AmiiboList @handleStart.once="handleStart"></AmiiboList>
     <footer>
       <p>
-        Code by <a href="https://moselikk.com">moselikk</a> data from <a href="https://amiiboapi.com">Amiiboapi</a> The image is copyright <a href="https://amiibo.com">Nintendo</a>
+        Code by <a href="https://moselikk.com">moselikk</a> data from <a href="https://amiiboapi.com">Amiiboapi</a> The
+        image is copyright <a href="https://amiibo.com">Nintendo</a>
       </p>
       <p>Check out the project in the <a href="https://github.com/moselikk">Github</a></p>
     </footer>
@@ -19,12 +20,12 @@ import AmiiboSelect from './components/Select'
 import HomeModule from './components/Home'
 export default {
   name: 'App',
-  data(){
-    return{
+  data() {
+    return {
       start: true,
       amiibos: [],
-      orderAmiibo:{
-        amiiboSeries:{},
+      orderAmiibo: {
+        amiiboSeries: {},
         gameSeries: {}
       },
       series: null,
@@ -36,29 +37,30 @@ export default {
       without: false
     }
   },
-  methods:{
-    handleStart(){
+  methods: {
+    handleStart() {
       this.start = false
     }
   },
-  components: { AmiiboList, AmiiboSelect, HomeModule}
+  components: { AmiiboList, AmiiboSelect, HomeModule }
 }
 </script>
 
 <style scope lang="scss">
-
-
-#app{
+#app {
   text-align: center;
-  .logo{
+  margin-right: 17px;
+  .logo {
     width: 300px;
     display: inline-block;
   }
-  footer{
+
+  footer {
     font-size: 13px;
     margin-top: 10vh;
     margin-bottom: 20px;
-    a{
+
+    a {
       text-decoration: none;
       font-weight: bold;
       color: #000;
