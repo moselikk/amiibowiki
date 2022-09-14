@@ -1,6 +1,6 @@
 <template>
   <div class="dialog" @scroll.stop.prevent>
-    <img :src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${amiiboinfo.image.slice(65)}`" :alt="amiiboInfo.name">
+    <img :src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${amiiboInfo.image.slice(65)}`" :alt="amiiboInfo.name">
   </div>
 </template>
 
