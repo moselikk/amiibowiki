@@ -37,26 +37,6 @@ export default {
   // 发请求获取所有amiibo数据
   this.getData()
   },
-  watch:{
-    show: function(show) {
-      // 隐藏初始页面
-      console.log('show变化了');
-      // 不存在的数据显示提示
-      if(!show || (show.length == 0) || (show.length==0 && !this.search) || (!this.selectClass && !this.search) || (!this.selectSeries && !this.search)){
-        this.without = true
-      } else {
-        this.without = false
-      }
-    },
-    /* selectSeries: function(selectSeries) {
-        if(!selectSeries && !this.search){
-          this.show = []
-          this.without = true
-        } else {
-          this.without = false
-        }
-      } */
-    },
   computed:{
     show(){
       return this.$store.state.show
@@ -116,10 +96,10 @@ export default {
       // console.log('handleSearch执行了');
       // 当处于系列选择时搜索内容池为所选系列内容
       let tempShow = []
+      let search = this.search.replace(/[^a-z,]/ig,'').toLowerCase()
       if(this.selectClass){
         for(let i=0; i<this.chosen.length; i++) {
           let name = this.chosen[i].name.trim().toLowerCase()
-          let search = this.search.trim().toLowerCase().replace(/[^a-z,]/ig, '')
           if(name.match(search) && (search != '')){
             tempShow.push(this.chosen[i])
           }
@@ -128,7 +108,6 @@ export default {
         // 直接搜索，内容池为所有amiibo元素
         for(let i=0; i<this.amiibos.length; i++) {
           let name = this.amiibos[i].name.trim().toLowerCase()
-          let search = this.search.trim().toLowerCase().replace(/[^a-z,]/ig, '')
           if(name.match(search) && (search != '')){
             tempShow.push(this.amiibos[i])
           }
