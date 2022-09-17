@@ -28,8 +28,6 @@ export default {
   name: 'AmiiboList',
   data(){
     return{
-      // 默认显示卡片数量
-      listLength: 10,
       without: false,
       btnShow: false,
       dialogShow: false,
@@ -54,6 +52,9 @@ export default {
   computed:{
     show(){
       return this.$store.state.show
+    },
+    listLength(){
+      return this.$store.state.listLength
     }
   },
   methods:{
@@ -72,7 +73,7 @@ export default {
     },
     // 加载更多
     loadMore(){
-      this.listLength += 10
+      this.$store.commit('LOADEMORE')
     }
   },
   components:{ Dialog }

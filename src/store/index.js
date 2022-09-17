@@ -1,19 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { listLength } from '../settings'
 
 Vue.use(Vuex)
 
 const state = {
   show: [],
+	listLength: listLength
 }
 
 const mutations = {
-  JIA(state,value){
-    state.sum += value
-  },
   UPDATESHOW(state,value){
     state.show = value
-  }
+  },
+	LOADEMORE(state){
+		state.listLength = state.listLength + listLength 
+	}
 }
 
 const actions = {
