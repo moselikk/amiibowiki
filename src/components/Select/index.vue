@@ -37,26 +37,6 @@ export default {
   // 发请求获取所有amiibo数据
   this.getData()
   },
-  watch:{
-    show: function(show) {
-      // 隐藏初始页面
-      // console.log('show变化了');
-      // 不存在的数据显示提示
-      if(!show || (show.length == 0) || (show.length==0 && !this.search) || (!this.selectClass && !this.search) || (!this.selectSeries && !this.search)){
-        this.without = true
-      } else {
-        this.without = false
-      }
-    },
-    /* selectSeries: function(selectSeries) {
-        if(!selectSeries && !this.search){
-          this.show = []
-          this.without = true
-        } else {
-          this.without = false
-        }
-      } */
-    },
   computed:{
     show(){
       return this.$store.state.show
