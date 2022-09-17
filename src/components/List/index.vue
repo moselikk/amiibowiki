@@ -36,9 +36,6 @@ export default {
       amiiboInfo: {}
     }
   },
-  mounted(){
-    // console.log(this.$store.state.count);
-  },
   watch:{
     show: function(){
       this.$emit('handleStart')
