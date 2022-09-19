@@ -1,5 +1,5 @@
 let bases = [],
-    character = ''
+    character = '',
     targetAmiibo = [],
     randomInt = 0,
     num = 0,
@@ -40,16 +40,16 @@ function isMobile() {
 }
 
 async function getBases() {
-  let Object = await fetch('https://amiiboapi.com/api/amiibo/');
-  if(Object.status >= 200 && Object.status < 300){
-    amiibos = await Object.json();
+  let object = await fetch('https://amiiboapi.com/api/amiibo/');
+  if(object.status >= 200 && Object.status < 300){
+    let amiibos = await Object.json();
     bases = await amiibos.amiibo;
     randomInt = await getRandomInt(0,(bases.length - 1));
     character =  await bases[randomInt].character;
     selectAmiibo(character.toLowerCase());
   }else{
     alert(`
-    ${a.status}---${a.statusText}
+    ${object.status}---${object.statusText}
     数据请求失败`
     );
  }
@@ -59,7 +59,7 @@ getBases();
 
 
 function selectAmiibo(word){
-  targetAmiibo = bases.filter((amiibo, index) => { 
+  targetAmiibo = bases.filter((amiibo) => { 
     return amiibo.character.toLowerCase().includes(word)
    })
   showData(targetAmiibo);
@@ -100,9 +100,9 @@ function showData(targetAmiibo) {
   while (item.firstChild) {
     item.removeChild(item.firstChild);
   }
-  for(i=0; i < targetAmiibo.length; i++) {
-    lili = document.createElement('li');
-    img = document.createElement('img');
+  for(let i=0; i < targetAmiibo.length; i++) {
+    let lili = document.createElement('li');
+    let img = document.createElement('img');
     img.setAttribute("data-src",`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${targetAmiibo[i].image.slice(65)}`);
     // img.src = targetAmiibo[i].image;
     lili.appendChild(img);
@@ -134,7 +134,7 @@ function handleClick(e) {
 }
 
 function selectIterm(e){
-  for(i=0; i < targetAmiibo.length; i++){
+  for(let i=0; i < targetAmiibo.length; i++){
     if(`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${targetAmiibo[i].image.slice(65)}` == e.target.src){
       return i
     }
