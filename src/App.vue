@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/Logo.webp" alt="" class="logo" />
+    <img src="https://less-1251975755.cos.ap-beijing.myqcloud.com/amiibowiki/Logo.webp" alt="" class="logo" />
     <AmiiboSelect></AmiiboSelect>
     <HomeModule :start="start"></HomeModule>
     <AmiiboList @handleStart.once="handleStart"></AmiiboList>
