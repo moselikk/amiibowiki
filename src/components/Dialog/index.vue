@@ -22,12 +22,15 @@
 
 <style lang="scss" scoped>
 .dialog{
+  // border: 20px solid #FFFFFF;
+  box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
   padding:30px;
   position:fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #bfa;
+  background-color: #fff;
   border-radius: 30px;
   img{
     height: 80%;

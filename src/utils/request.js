@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-  baseURL: 'https://amiiboapi.com/api',
+  baseURL: 'http://121.5.153.162:5000/api',
   timeout: 5000
 })
 

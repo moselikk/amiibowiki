@@ -6,7 +6,8 @@
       <div class="list">
         <div v-show="without">没有相关数据</div>
         <div 
-          class="img-list" v-for="(item,$index) in (show ? show.slice(0,listLength) : [])" 
+          v-for="(item,$index) in (show ? show.slice(0,listLength) : [])" 
+          class="img-list" 
           :key="item.tail"
           @click="handleClick($index)"
           >
@@ -91,6 +92,7 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 100;
 }
 .list{
   margin: 30px 10px;
@@ -112,9 +114,15 @@ export default {
     box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.3);
     border-radius: 25px;
     cursor: pointer;
+    position: relative;
   }
   img{
     height: 100%;
+    // width: 100%;
+    // object-fit: contain;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 button{
