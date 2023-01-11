@@ -4,7 +4,6 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { defineProps } from "vue";
 const props = defineProps(["start"]);
 </script>
 <template>

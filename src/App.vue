@@ -36,7 +36,7 @@ const handleStart = () => (data.start = false);
       <p>
         Code by <a href="https://moselikk.com">moselikk</a> data from
         <a href="https://amiiboapi.com">Amiiboapi</a> The image is copyright
-        <a href="https://amiibo.com">Nintendo</a>
+        <a href="https://www.nintendo.com/amiibo/">Nintendo</a>
       </p>
       <p>
         Check out the project in the
