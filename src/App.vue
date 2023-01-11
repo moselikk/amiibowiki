@@ -2,7 +2,8 @@
 import AmiiboList from "@/components/List/index.vue";
 import AmiiboSelect from "@/components/Select/index.vue";
 import HomeModule from "@/components/Home/index.vue";
-import { reactive, toRefs } from "vue";
+import { reactive, toRefs, ref } from "vue";
+import { debounce } from "lodash-es";
 const data = reactive({
   start: true,
   amiibos: [],
@@ -19,19 +20,29 @@ const data = reactive({
   without: false,
 });
 const { start } = toRefs(data);
+const amiiboSelect = ref();
 const handleStart = () => (data.start = false);
+const resetStatus = debounce(
+  () => {
+    amiiboSelect.value.resetSelectStatus();
+    data.start = true;
+  },
+  300,
+  { leading: true }
+);
 </script>
 
 <template>
   <div id="app">
     <img
       src="https://less-1251975755.cos.ap-beijing.myqcloud.com/amiibowiki/Logo.webp"
-      alt=""
+      alt="Amiibowiki"
       class="logo"
+      @click="resetStatus"
     />
-    <AmiiboSelect></AmiiboSelect>
+    <AmiiboSelect ref="amiiboSelect"></AmiiboSelect>
     <HomeModule :start="start"></HomeModule>
-    <AmiiboList @handleStart.once="handleStart"></AmiiboList>
+    <AmiiboList @handleStart="handleStart"></AmiiboList>
     <footer>
       <p>
         Code by <a href="https://moselikk.com">moselikk</a> data from
@@ -48,17 +59,21 @@ const handleStart = () => (data.start = false);
 
 <style scoped lang="scss">
 #app {
+  background-color: #fafafa;
+  height: 100vh;
   text-align: center;
   margin-right: 17px;
   .logo {
     width: 300px;
     display: inline-block;
+    cursor: pointer;
   }
 
   footer {
     font-size: 13px;
-    margin-top: 10vh;
-    margin-bottom: 20px;
+    padding-top: 8vh;
+    padding-bottom: 2vh;
+    background-color: #fafafa;
 
     a {
       text-decoration: none;

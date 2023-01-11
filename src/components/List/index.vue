@@ -38,7 +38,7 @@ const listLength = computed(() => {
 });
 
 watch(show, (show) => {
-  emit("handleStart");
+  if (show.length) emit("handleStart");
   if (show.length > listLength.value) {
     data.btnShow = true;
   } else {
@@ -98,7 +98,8 @@ const loadMore = () => {
 
 <style scoped lang="scss">
 .listOuter {
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
+  background-color: #fafafa;
 }
 .shade {
   position: fixed;
@@ -123,9 +124,10 @@ const loadMore = () => {
     // width: 200px;
     // margin: 10;
     // border: 8px solid #000;
+    background-color: #fafafa;
     width: 200px;
     height: 280px;
-    border: 20px solid #ffffff;
+    border: 20px solid #fafafa;
     box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.3);
     border-radius: 25px;
     cursor: pointer;

@@ -122,6 +122,15 @@ const handleSearch = () => {
   }
   settings.UPDATESHOW(tempShow);
 };
+const resetSelectStatus = () => {
+  data.selectSeries = "" as keyof IOrderAmiibo;
+  data.selectClass = "";
+  settings.UPDATESHOW([]);
+  searchRef.value.placeholder = `All amiibos ${data.amiibos.length}`;
+};
+defineExpose({
+  resetSelectStatus,
+});
 onMounted(() => {
   // 发请求获取所有amiibo数据
   getData();
@@ -131,7 +140,7 @@ onMounted(() => {
   <div>
     <div class="select-boox">
       <select v-model="selectSeries" @change="handleSelectSeries">
-        <option value="">--请选择一项--</option>
+        <option disabled value="">--请选择一项--</option>
         <option
           v-for="(_, $index) in orderAmiibo"
           :key="$index"
@@ -145,7 +154,7 @@ onMounted(() => {
         :disabled="!selectSeries"
         @change="handleSelectClass"
       >
-        <option value="">--请选择一项--</option>
+        <option disabled value="">--请选择一项--</option>
         <option v-for="(_, $index) in series" :key="$index" :value="$index">
           {{ $index }}
         </option>
