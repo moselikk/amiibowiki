@@ -1,5 +1,14 @@
+<script lang="ts">
+export default {
+  name: "HomeModule",
+};
+</script>
+<script setup lang="ts">
+import { defineProps } from "vue";
+const props = defineProps(["start"]);
+</script>
 <template>
-  <div v-show="start" class="start">
+  <div v-show="props.start" class="start">
     <h1>正因为生来什么都没有，因此我们能拥有一切。</h1>
     <img
       src="https://less-1251975755.cos.ap-beijing.myqcloud.com/amiibowiki/start-img.png"
@@ -8,14 +17,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "HomeModule",
-  props: ["start"],
-};
-</script>
-
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .start {
   text-align: center;
   margin-top: 10vh;
