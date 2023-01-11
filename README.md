@@ -1,24 +1,52 @@
-# AmiiboWIKI
+# v3
 
-### Hi~ o(*￣▽￣*)ブ___欢迎你来！
+This template should help get you started developing with Vue 3 in Vite.
 
-![](./src/assets/new.png)
-使用vue开发的amiibo卡片展示站；
+## Recommended IDE Setup
 
-目前功能较为简陋，计划开发流程如下：
-- [x] 开始动手(不去做一切都是空想！！！)
-- [x] 基本图片展示功能，数据请求及处理
-- [x] 移动端适配
-- [x] 卡片人物详情模块
-- [x] 图片懒加载（防抖处理）
-- [x] 重构布局，美化界面(使用Vue重构，增加通过系列查询功能，已完成50%)
-- [ ] 增加后端，开发注册、登陆、评论等社区功能
-- [ ] 增加消息动态栏，显示用户发布的动态（amiibo交流信息）
-- [ ] 移植为小程序
-- [ ] 使用Hybrid App技术开发对应ios，Android应用  
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
----
+## Type Support for `.vue` Imports in TS
 
-*本项目涉及到的amiibo图片版权归日本任天堂公司所有，此处使用仅为学习，如有侵权请联系删除*
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-所用API来自 https://www.amiiboapi.com
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+
+1. Disable the built-in TypeScript Extension
+    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
+
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test:unit
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```
