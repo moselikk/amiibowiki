@@ -124,10 +124,10 @@ const loadMore = () => {
     // width: 200px;
     // margin: 10;
     // border: 8px solid #000;
-    background-color: #fafafa;
+    background-color: #fff;
     width: 200px;
     height: 280px;
-    border: 20px solid #fafafa;
+    border: 20px solid #fff;
     box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.3);
     border-radius: 25px;
     cursor: pointer;
