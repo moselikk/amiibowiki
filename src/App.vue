@@ -21,10 +21,12 @@ const data = reactive({
 });
 const { start } = toRefs(data);
 const amiiboSelect = ref();
+const homeModule = ref();
 const handleStart = () => (data.start = false);
 const resetStatus = debounce(
   () => {
     amiiboSelect.value.resetSelectStatus();
+    homeModule.value.retry();
     data.start = true;
   },
   300,
@@ -41,7 +43,7 @@ const resetStatus = debounce(
       @click="resetStatus"
     />
     <AmiiboSelect ref="amiiboSelect"></AmiiboSelect>
-    <HomeModule :start="start"></HomeModule>
+    <HomeModule :start="start" ref="homeModule"></HomeModule>
     <AmiiboList @handleStart="handleStart"></AmiiboList>
     <footer>
       <p>
@@ -62,16 +64,18 @@ const resetStatus = debounce(
   background-color: #fafafa;
   height: 100vh;
   text-align: center;
-  margin-right: 17px;
+  margin-right: 2vh;
   .logo {
     width: 300px;
+    height: 105px;
     display: inline-block;
     cursor: pointer;
+    margin-top: 10px;
   }
 
   footer {
     font-size: 13px;
-    padding-top: 8vh;
+    padding-top: 6vh;
     padding-bottom: 2vh;
     background-color: #fafafa;
 
