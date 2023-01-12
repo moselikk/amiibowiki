@@ -6,9 +6,22 @@
 > 现由 Vite Vue3 TS 强力驱动
 
 ![](./src/assets/new.png)
-使用 vue 开发的 amiibo 卡片展示站；
+使用 vue 开发的 amiibo 卡片展示站
 
-目前功能较为简陋，计划开发流程如下：
+```markdown
+- Vue3 易学易用，性能出色，适用场景丰富的 Web 前端框架
+- Vite 下一代的前端工具链
+- Pinia 值得你喜欢的 Vue Store
+- Axios 基于 Promise 面向浏览器和 node.js 的 HTTP 客户端
+- Lodash 一个提供模块化、性能和额外功能的现代 JavaScript 实用库
+- ESLint 可扩展的 JavaScript 和 JSX 代码检查工具
+- Prettier 固执的代码格式化器
+- Sass 让 CSS 再次变得有趣
+- TypeScript 一种具有类型语法的 JavaScript
+- GitHub Actions 从创意到生产,使工作流程自动化
+```
+
+计划开发流程如下：
 
 - [x] 开始动手(不去做一切都是空想！！！)
 - [x] 基本图片展示功能，数据请求及处理
