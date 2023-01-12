@@ -19,7 +19,7 @@ jobs:
           npm run build
       - name: Touch CNAME
         run: |
-          ls ${{ github.workspace }}
+          echo 'www.amiibowiki.com' > ${{ github.workspace }}/dist/CNAME
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
