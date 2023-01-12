@@ -1,0 +1,36 @@
+# CI CD workflow
+name: Build And Deploy To Github Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+      - name: Touch CNAME
+        run: |
+          cd dist
+          echo 'www.amiibowiki.com' > CNAME
+          git init
+          git branch -m main
+          git add -A
+          git commit -m 'deploy'
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
+#
+# 2023.1.12
+# code by: moselikk
