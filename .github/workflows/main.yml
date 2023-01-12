@@ -28,5 +28,6 @@ jobs:
           BRANCH: gh-pages
           FOLDER: dist
 #
+# LICENSE: MIT
 # 2023.1.12
 # code by: moselikk
