@@ -20,8 +20,8 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          FOLDER: dist
+          token: ${{ secrets.ACCESS_TOKEN }}
+          folder: dist
 #
 # LICENSE: MIT
 # 2023.1.12
