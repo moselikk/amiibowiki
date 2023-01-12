@@ -21,10 +21,6 @@ jobs:
         run: |
           cd dist
           echo 'www.amiibowiki.com' > CNAME
-          git config --global init.defaultBranch main
-          git init
-          git add -A
-          git commit -m 'deploy'
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
