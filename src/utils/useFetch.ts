@@ -1,6 +1,6 @@
 import { ref, isRef, unref, watchEffect, type Ref } from "vue";
 
-export function useFetch<T>(url: string | Ref<string>) {
+export function useFetch<T>(url: string | Ref<string>, setting?: RequestInit) {
   const response = ref(null) as Ref<T | null>;
   const error = ref(null);
 
@@ -10,7 +10,7 @@ export function useFetch<T>(url: string | Ref<string>) {
     const urlValue = unref(url);
 
     try {
-      const res = await fetch(urlValue);
+      const res = await fetch(urlValue, setting);
       response.value = await res.json();
     } catch (e: any) {
       error.value = e;
