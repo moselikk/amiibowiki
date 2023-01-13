@@ -1,7 +1,8 @@
 import axios from "axios";
+import settings from "@/settings";
 
 const service = axios.create({
-  baseURL: "https://www.amiiboapi.com/api/",
+  baseURL: settings.amiiboApi,
   timeout: 5000,
 });
 
