@@ -71,7 +71,7 @@ const loadMore = () => {
 </script>
 <template>
   <div class="listOuter">
-    <div class="shade" v-if="dialogShow" @click="handleShade">
+    <div class="shade" v-if="dialogShow" @click.stop="handleShade">
       <AmiiboDialog :amiiboInfo="amiiboInfo"></AmiiboDialog>
     </div>
     <div class="list">
@@ -110,6 +110,7 @@ const loadMore = () => {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 100;
+  cursor: help;
 }
 .list {
   margin: 30px 10px;

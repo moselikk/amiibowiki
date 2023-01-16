@@ -7,7 +7,7 @@ export default {
 defineProps(["amiiboInfo"]);
 </script>
 <template>
-  <div class="dialog" @scroll.stop.prevent>
+  <div class="dialog" @click.stop.prevent>
     <img
       :src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${amiiboInfo.image.slice(
         65
@@ -38,6 +38,7 @@ defineProps(["amiiboInfo"]);
   transform: translate(-50%, -50%);
   background-color: #fafafa;
   border-radius: 30px;
+  cursor: auto;
   img {
     height: 80%;
   }

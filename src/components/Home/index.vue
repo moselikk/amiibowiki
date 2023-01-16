@@ -9,7 +9,7 @@ import { useFetch } from "@/utils/useFetch";
 import settings from "@/settings";
 import CryptoJS from "crypto-js";
 const props = defineProps(["start"]);
-const { response, error, retry } = useFetch<{ hitokoto: string }>(
+const { response, error, retry } = useFetch<{ hitokoto: string; from: string }>(
   settings.hitokotoApi
 );
 
@@ -19,8 +19,8 @@ function truncate(q: any) {
   return q.substring(0, 10) + len + q.substring(len - 10, len);
 }
 
-var appKey = "7907d851a8f6b208";
-var key = "37cxyxCAWl3OXOE4lvPqvsaOnpP1F1r7"; //注意：暴露appSecret，有被盗用造成损失的风险
+var appKey = "";
+var key = ""; //注意：暴露appSecret，有被盗用造成损失的风险
 var salt = new Date().getTime();
 var curtime = Math.round(new Date().getTime() / 1000);
 var query = "您好，欢迎再次使用有道智云文本翻译API接口服务";
@@ -59,6 +59,8 @@ defineExpose({
       {{ hitokoto }}
     </h1>
     <h1 v-else>Loading...</h1>
+    <br />
+    <div class="from">{{ response?.from }}</div>
     <img
       src="https://less-1251975755.cos.ap-beijing.myqcloud.com/amiibowiki/start-img.png"
       alt="start"
@@ -74,10 +76,20 @@ defineExpose({
   position: relative;
   h1 {
     display: inline-block;
-    width: 40vw;
-    margin-bottom: 35px;
+    width: 55vw;
+    margin-bottom: 15px;
     font-weight: normal;
     font-size: 26px;
+  }
+  .from {
+    display: inline-block;
+    border-radius: 15px;
+    padding: 5px 15px;
+    font-size: 14px;
+    text-align: center;
+    background: #d9d9d9;
+    box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.15),
+      inset 0px 2px 2px rgba(0, 0, 0, 0.35);
   }
   img {
     width: 78vw;
@@ -85,6 +97,7 @@ defineExpose({
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    filter: drop-shadow(-10px 10px 4px rgba(0, 0, 0, 0.81));
   }
 }
 </style>
