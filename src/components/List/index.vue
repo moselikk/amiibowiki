@@ -100,6 +100,7 @@ const loadMore = () => {
 .listOuter {
   // margin-bottom: 30px;
   background-color: #fafafa;
+  padding-bottom: calc(8vh - 10px);
 }
 .shade {
   position: fixed;

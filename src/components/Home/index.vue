@@ -44,15 +44,9 @@ let enData = {
   vocabId: vocabId,
 };
 const hitokoto = computed(() => {
-  const formatHitokoto =
-    response.value?.hitokoto.slice(-1) === "。"
-      ? response.value?.hitokoto.slice(0, -1)
-      : response.value?.hitokoto;
-  const { response: enHitokoto, error: enError } = useFetch(
-    "https://openapi.youdao.com/api",
-    { body: enData }
-  );
-  return formatHitokoto;
+  return response.value?.hitokoto.slice(-1) === "。"
+    ? response.value?.hitokoto.slice(0, -1)
+    : response.value?.hitokoto;
 });
 defineExpose({
   retry,

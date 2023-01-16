@@ -75,7 +75,6 @@ const resetStatus = debounce(
 
   footer {
     font-size: 13px;
-    padding-top: calc(8vh - 10px);
     padding-bottom: 2vh;
     background-color: #fafafa;
     position: relative;
@@ -96,7 +95,8 @@ const resetStatus = debounce(
     .line::before {
       content: "";
       position: absolute;
-      top: calc(8vh - 25px);
+      // top: calc(8vh - 25px);
+      top: -13px;
       left: calc(50% - 15em);
       width: 30em;
       height: 1px;
