@@ -83,13 +83,10 @@ defineExpose({
   }
   .from {
     display: inline-block;
-    border-radius: 15px;
-    padding: 5px 15px;
+    padding-top: 10px;
     font-size: 14px;
     text-align: center;
-    background: #d9d9d9;
-    box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.15),
-      inset 0px 2px 2px rgba(0, 0, 0, 0.35);
+    border-top: 1px solid rgba(128, 128, 128, 0.3);
   }
   img {
     width: 78vw;
