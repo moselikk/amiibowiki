@@ -4,16 +4,15 @@ export default {
 };
 </script>
 <script setup lang="ts">
+import { api, config } from '@/settings';
+import { imgSrc } from '@/utils/submethod'
+
 defineProps(["amiiboInfo"]);
+
 </script>
 <template>
   <div class="dialog" @click.stop.prevent>
-    <img
-      :src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${amiiboInfo.image.slice(
-        65
-      )}`"
-      :alt="amiiboInfo.name"
-    />
+    <img :src="imgSrc(amiiboInfo.image)" :alt="amiiboInfo.name" />
     <p>{{ amiiboInfo.name }}</p>
     <p>gameSeries: {{ amiiboInfo.gameSeries }}</p>
     <p>type: {{ amiiboInfo.type }}</p>
@@ -39,9 +38,11 @@ defineProps(["amiiboInfo"]);
   background-color: #fafafa;
   border-radius: 30px;
   cursor: auto;
+
   img {
     height: 80%;
   }
+
   ul {
     li {
       list-style: none;

@@ -4,6 +4,8 @@ import AmiiboSelect from "@/components/Select/index.vue";
 import HomeModule from "@/components/Home/index.vue";
 import { reactive, toRefs, ref } from "vue";
 import { debounce } from "lodash-es";
+import { api, information } from "@/settings";
+
 const data = reactive({
   start: true,
   amiibos: [],
@@ -36,24 +38,19 @@ const resetStatus = debounce(
 
 <template>
   <div id="app">
-    <img
-      src="https://less-1251975755.cos.ap-beijing.myqcloud.com/amiibowiki/Logo.webp"
-      alt="Amiibowiki"
-      class="logo"
-      @click="resetStatus"
-    />
+    <img :src="`${api.ossSource}amiibowiki/Logo.webp`" alt="Amiibowiki" class="logo" @click="resetStatus" />
     <AmiiboSelect ref="amiiboSelect"></AmiiboSelect>
     <HomeModule :start="start" ref="homeModule"></HomeModule>
     <AmiiboList @handleStart="handleStart"></AmiiboList>
     <footer>
       <p :class="{ line: !start }">
-        Code by <a href="https://moselikk.com">moselikk</a> data from
-        <a href="https://amiiboapi.com">Amiiboapi</a> The image is copyright
-        <a href="https://www.nintendo.com/amiibo/">Nintendo</a>
+        Code by <a :href="information.authorHomePage">moselikk</a> data from
+        <a :href="`${api.amiiboApi}amiibowiki/Logo.webp`">Amiiboapi</a> The image is copyright
+        <a :href="api.amiiboOfficialAddress">Nintendo</a>
       </p>
       <p>
         Check out the project in the
-        <a href="https://github.com/moselikk">Github</a>
+        <a :href="information.authorGithub">Github</a>
       </p>
     </footer>
   </div>
@@ -65,6 +62,7 @@ const resetStatus = debounce(
   height: 100vh;
   text-align: center;
   margin-right: 10px;
+
   .logo {
     width: 300px;
     height: 105px;
@@ -92,6 +90,7 @@ const resetStatus = debounce(
       }
       */
     }
+
     .line::before {
       content: "";
       position: absolute;

@@ -6,11 +6,13 @@ export default {
 <script setup lang="ts">
 import { computed, watch } from "vue";
 import { useFetch } from "@/utils/useFetch";
-import settings from "@/settings";
+import { api } from "@/settings";
 import CryptoJS from "crypto-js";
+
+
 const props = defineProps(["start"]);
 const { response, error, retry } = useFetch<{ hitokoto: string; from: string }>(
-  settings.hitokotoApi
+  api.hitokotoApi
 );
 
 function truncate(q: any) {
@@ -61,10 +63,7 @@ defineExpose({
     <h1 v-else>Loading...</h1>
     <br />
     <div class="from">{{ response?.from }}</div>
-    <img
-      src="https://less-1251975755.cos.ap-beijing.myqcloud.com/amiibowiki/start-img.png"
-      alt="start"
-    />
+    <img :src="`${api.ossSource}amiibowiki/start-img.png`" alt="start" />
   </div>
 </template>
 
@@ -74,6 +73,7 @@ defineExpose({
   margin-top: 10vh;
   height: 50vh;
   position: relative;
+
   h1 {
     display: inline-block;
     width: 55vw;
@@ -81,6 +81,7 @@ defineExpose({
     font-weight: normal;
     font-size: 26px;
   }
+
   .from {
     display: inline-block;
     padding-top: 10px;
@@ -88,6 +89,7 @@ defineExpose({
     text-align: center;
     border-top: 1px solid rgba(128, 128, 128, 0.3);
   }
+
   img {
     width: 78vw;
     position: absolute;

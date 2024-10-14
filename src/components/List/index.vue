@@ -7,6 +7,8 @@ export default {
 import { reactive, watch, computed, toRefs } from "vue";
 import AmiiboDialog from "@/components/Dialog/index.vue";
 import { useStore } from "@/store/useStore";
+import { imgSrc } from '@/utils/submethod'
+
 const emit = defineEmits(["handleStart"]);
 const settings = useStore();
 const data = reactive({
@@ -76,20 +78,9 @@ const loadMore = () => {
     </div>
     <div class="list">
       <div v-show="without">没有相关数据</div>
-      <div
-        v-for="(item, $index) in show ? show.slice(0, listLength) : []"
-        class="img-list"
-        :key="item.tail"
-        @click="handleClick($index)"
-      >
-        <!--:src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${item.image.slice(65)}`"-->
-        <img
-          :key="item.tail"
-          :alt="item.name"
-          :src="`https://less-1251975755.cos.ap-beijing.myqcloud.com/images/${item.image.slice(
-            65
-          )}`"
-        />
+      <div v-for="(item, $index) in show ? show.slice(0, listLength) : []" class="img-list" :key="item.tail"
+        @click="handleClick($index)">
+        <img :key="item.tail" :alt="item.name" :src="imgSrc(item.image)" />
       </div>
     </div>
     <button @click="loadMore" v-show="btnShow">加载更多</button>
@@ -102,6 +93,7 @@ const loadMore = () => {
   background-color: #fafafa;
   padding-bottom: calc(8vh - 10px);
 }
+
 .shade {
   position: fixed;
   top: 0;
@@ -112,6 +104,7 @@ const loadMore = () => {
   z-index: 100;
   cursor: help;
 }
+
 .list {
   margin: 30px 10px;
   margin-bottom: 0;
@@ -122,6 +115,7 @@ const loadMore = () => {
   align-items: center;
   padding: 0px;
   gap: 30px;
+
   .img-list {
     // width: 200px;
     // margin: 10;
@@ -135,6 +129,7 @@ const loadMore = () => {
     cursor: pointer;
     position: relative;
   }
+
   img {
     height: 100%;
     // width: 100%;
@@ -144,6 +139,7 @@ const loadMore = () => {
     transform: translateX(-50%);
   }
 }
+
 button {
   margin-top: 20px;
   width: 80px;

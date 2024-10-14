@@ -1,7 +1,8 @@
-import { defineStore } from "pinia";
-import settings from "@/settings";
-const { listLength } = settings;
-export const useStore = defineStore("settings", {
+import { defineStore } from 'pinia';
+import { config } from '@/settings';
+
+const { listLength } = config;
+export const useStore = defineStore('settings', {
   state: () => {
     return {
       show: [],
