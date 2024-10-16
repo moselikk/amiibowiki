@@ -117,26 +117,25 @@ const loadMore = () => {
   gap: 30px;
 
   .img-list {
-    // width: 200px;
-    // margin: 10;
-    // border: 8px solid #000;
-    background-color: #fff;
-    width: 200px;
+    min-width: 200px;
     height: 280px;
+    background-color: #fff;
     border: 20px solid #fff;
-    box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.3);
     border-radius: 25px;
     cursor: pointer;
     position: relative;
+    box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .img-list:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 
   img {
-    height: 100%;
-    // width: 100%;
-    // object-fit: contain;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    height: 280px;
+    ;
   }
 }
 
